@@ -1,7 +1,7 @@
 Part 1: Fundamentals – Introduction to Object-Oriented Python and Metaprogramming
-
+第一部分：基础知识 --- 简介Python元编程和面向对象编程 
 The objective of this section is to give you an overview of the concept of metaprogramming, its usage, and its advantages in building Python-based applications. This section also covers the basics of object-oriented programming in Python, such as the usage of classes, functions, and objects, to help you familiarize yourself with the basic concepts, before deep diving into the complex properties of metaprogramming. 
-
+本节的目标是概览元编程的概念
 This part contains the following chapters:
 
 Chapter 1, The Need for and Applications of Metaprogramming
