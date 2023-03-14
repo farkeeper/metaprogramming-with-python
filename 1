@@ -1,1 +1,466 @@
 https://learning.oreilly.com/library/view/metaprogramming-with-python/9781838554651/B13426_01_Final_PG_epub.xhtml#:-:text=
+In today’s programming world, Python is considered one of the easiest languages to learn and use to develop useful applications. Understanding the programming concepts and applying them is easier in Python compared to any other programming language. A Python program can be written simply by adding existing libraries and making use of their inbuilt methods. At the same time, the language also has many powerful features that can help in developing robust libraries and applications.
+在当今编程界，python被认定是最易上手和开发应用程序的语言之一。与其他语言相比，python理解编程概念和使用他们更容易。
+This book covers the need for one of the most advanced features in Python, called metaprogramming, along with insights into its practical applications. Understanding the concepts of metaprogramming helps in tapping into the advanced features of Python 3 and knowing where to apply them to make Python code more reusable.
+
+Unlike the regular Python-based application development that follows object-oriented programming, metaprogramming covers certain advanced concepts of Python that deal with manipulating the programmable objects of Python, such as its classes, methods, functions, and variables. Throughout this book, we will look at applications and examples that help in understanding these concepts in a user-friendly manner.
+
+In this chapter, we will provide an introduction to metaprogramming and the need to perform metaprogramming using Python 3. We will cover the following topics:
+
+An overview of metaprogramming
+Understanding why we need metaprogramming
+Exploring the applications of metaprogramming
+By the end of this chapter, you will have a high-level understanding of metaprogramming in Python 3, the need for using it, and know of a few practical examples where it can be applied.
+
+Technical requirements
+
+The code examples in this chapter are available on GitHub repository for this chapter at https://github.com/PacktPublishing/Metaprogramming-with-Python/tree/main/Chapter01.
+
+An overview of metaprogramming
+
+Metaprogramming is a concept widely heard of in other programming languages such as C++, Java, .NET, and Ruby but not so widely heard of in Python. Python is a programming language that is easy to learn for beginners to programming and efficient to implement for advanced programmers. Therefore, it has an additional advantage in improving efficiency and optimization while developing high-performance applications when techniques such as metaprogramming are blended with the process of application development.
+
+In this book, we will deep dive into the concepts of metaprogramming using Python 3.
+
+The term meta, as the name suggests, is a process that references itself or its the high-level information. In the context of programming, metaprogramming also describes the similar concept of a program referencing itself or a program object referencing itself. A program referencing itself or its entity gives data on the program or the programming entity that can be used at various levels to perform activities, such as transformations or manipulations, in a programming language.
+
+To understand the term meta, let’s consider the term metadata. As an example, let’s look at a Python DataFrame. For those who are not familiar with the term DataFrame, we can use the term table. The one shown in the following screenshot is called Employee Data:
+
+Figure 1.1 – Employee Data table
+Figure 1.1 – Employee Data table
+
+This Employee Data table consists of employee information such as the name of the employee, employee ID, qualification, experience, salary, and so on.
+
+All of this information are attributes of single or multiple employees, and it is the data of employees in an organization. So, what will the metadata be? The metadata is the data of how employee data is stored in the Employee Data table.
+
+The metadata for the Employee Data table defines how each column and its values are stored in the table. For example, in the following screenshot, we can see metadata where Name is stored as a string with a length of 64 characters, while Salary is stored as a Float with a length of 12 digits:
+
+Figure 1.2 – Metadata representation for the Employee Data table
+Figure 1.2 – Metadata representation for the Employee Data table
+
+Accessing, modifying, transforming, and updating the Employee Data table using information such as the name or ID of an employee is data manipulation, while accessing, modifying, transforming, and updating the data type or size of the column name or employee ID or salary, is metadata manipulation.
+
+With this understanding, let’s look at an example of metaprogramming.
+
+Metaprogramming – a practical introduction
+
+Any programming language that can be used to write code to perform actions consists of a basic unit or piece of code that can be written to perform an action. This is known as a function.
+
+If we have two numbers stored in two variables, a and b, to perform an add action, you can simply add those two numbers by writing a function, as shown in the following code block:
+
+def add(a,b):    
+    c = a + b    
+    return c  
+Now, if we execute this code, it can go through different scenarios, depending on the input data provided to the add function. Let’s take a close look at each of them.
+
+Scenario 1
+
+Running the add function with two integers would result in two numbers being added together, as follows:
+
+add(1,3)  
+4
+Scenario 2
+
+Running the add function with two strings would result in the concatenation of two words, as follows:
+
+add('meta','program')   
+metaprogram
+Scenario 3
+
+Let’s take a look at running the add function with one string and one integer:
+
+add('meta',1)  
+The preceding code would result in the following error:
+
+Figure 1.3 – TypeError
+Figure 1.3 – TypeError
+
+Let’s examine this error in detail.
+
+The error in the preceding code snippet denotes a TypeError, which was caused by an attempt to add a meta string with an integer of 1. The question that may occur to you is, can we resolve this error using metaprogramming?
+
+The add function in this example denotes a piece of code or program, similar to how the Employee Data table in Figure 1.1 denotes data. In the same line, can we identify the metadata of the add function and use it to resolve the TypeError object returned by the following code:
+
+add('meta',1)  
+Next, we will look at a practical example of metaprogramming. We will be making use of the metadata of the add function to understand this concept.
+
+Metadata of the add function
+
+A function in any programming language is written to perform a set of operations on the input variables; it will return the results as a consequence of the operations performed on them. In this section, we will look at a simple example of a function that adds two variables. This will help us understand that metaprogramming can be applied to functions and manipulate the behavior of the function without modifying the algorithm of the function. We will be adding these two variables by writing an add function. To change the results of the add function, we will be manipulating the metadata of its two input variables, thus getting different results each time a different type of input variable is provided to execute the function. Just like we can manipulate what a function should do by writing lines of code to perform various operations, we can also manipulate the function itself by programming its metadata and setting restrictions on what it should and shouldn’t do. Just like a dataset, DataFrame, or table has data and metadata, a program or a function in Python 3 also has data and metadata. In this example, we will be manipulating the actions that are performed by the add function by restricting its behavior – not based on the input data provided to the function but on the type of input data provided to the add function instead. Take a look at the following screenshot:
+
+Figure 1.4 – Examining the data and metadata of the add function
+Figure 1.4 – Examining the data and metadata of the add function
+
+The following code helps us identify the metadata for each data item in the add function:
+
+def add(a,b):    
+    c = a +  b    
+    print ("Metadata of add", type(add))    
+    print ("Metadata of a", type(a))    
+    print ("Metadata of b", type(b))    
+    print ("Metadata of c", type(c))   
+A function call to the preceding function will now return the metadata of the add function instead of its result. Now, let’s call the add method with an integer as input:
+
+add(1,3)  
+We’ll get the following output:
+
+Metadata of add <class 'function'>
+Metadata of a <class 'int'>
+Metadata of b <class 'int'>
+Metadata of c <class 'int'>
+Similarly, we can also check the addition of strings, as follows:
+
+add('test','string')
+We’ll get the following output:
+
+Metadata of add <class 'function'>
+Metadata of a <class 'str'>
+Metadata of b <class 'str'>
+Metadata of c <class 'str'>
+Python 3 allows us to use the metadata of the code to manipulate it so that it deviates from its actual behavior. This will also provide customized solutions for the problems we are trying to solve.
+
+In the preceding example, we used the type function, a method in Python that returns the class or data type that any object or variable belongs to.
+
+From the preceding output, it is evident that the a and b variables we passed to the add function belong to the integer data type, and its result, c, is an integer too. The add function itself is of the function class/type.
+
+Resolving type errors using metaprogramming
+
+There are many variations on how we can resolve the type error from the add function we saw in the previous section using metaprogramming. We will look at this in this section.
+
+Scenario 1
+
+The following meta-program handles the error and allows the add function to add two strings or two integers. It also suggests that the user enters the input data with the right data types:
+
+def add(a,b):
+    if (type(a) is str and type(b) is int) or\
+        (type(a) is int and type(b) is str):
+        return "Please enter both input values as integers or\
+          string"
+    else:
+        c = a + b
+        return c  
+In the function definition of add, we have added two conditions – one to check if the type of a is a string and the type of b is an int, or if the type of a is an int and the type of b is a string. We are checking the combination of these input variables to handle the type mismatch error and directing the users to provide the right data type for input variables.
+
+The following table shows the various combinations of input variable data types and their corresponding output or results based on the conditions set on the metadata of the add function, based on Scenario 1:
+
+Figure 1.5 – Scenario 1 metadata combinations
+Figure 1.5 – Scenario 1 metadata combinations
+
+The following code executes the add function to reinforce the input-output combinations explained in Figure 1.5:
+
+add(1,3)  
+4
+add('meta','program')  
+metaprogram
+add('meta',1)  
+'Please enter both input values as integers or string'
+add(1,'meta')  
+'Please enter both input values as integers or string'
+Scenario 2
+
+The following meta-program resolves the type mismatch error by converting the mismatching data types into string variables and performing a string concatenation. It is only logical to concatenate a string and an integer using a + operator as we cannot perform arithmetic addition on these two different data types. Take a look at the following program:
+
+def add(a,b):
+    if type(a) is int and type(b) is int:
+        c = a +  b
+        return c
+    elif type(a) is str and type(b) is int or\
+          type(a) is int and type(b) is str or \
+          type(a) is str and type(b) is str:
+        c = str(a) + str(b)
+        return c
+    else:
+        print("Please enter string or integer")
+Here, no matter what input we provide for the a and b variables, they both get converted into string variables and are then concatenated using +, whereas if both the input variables are integers, they get added using arithmetic addition.
+
+The following table shows the various combinations of input variable data types and their corresponding output or results based on the conditions set on the metadata of the add function based on Scenario 2:
+
+Figure 1.6 – Scenario 2 metadata combinations
+Figure 1.6 – Scenario 2 metadata combinations
+
+Executing the following code provides the combinations of output values we saw in the preceding table:
+
+add(1343,35789)  
+37132
+add('Meta',' Programming')  
+'MetaProgramming'
+add('meta',157676)  
+'meta157676'
+add(65081, 'meta')  
+'65081meta'
+add(True, 'meta')
+Please enter string or integer
+Scenario 3
+
+Now, let’s go a step further and restrict the nature of the add function itself to ensure it only performs arithmetic addition and doesn’t accept any other data types or combinations of data types.
+
+In the following code block, we have added another condition to perform a data type check on floating-point values, along with data type checks for the string and integer input values.
+
+This function only accepts numeric values as input and will return a message directing users to input numbers so that only arithmetic addition is performed. Let’s look at the code:
+
+def add(a,b):
+    if type(a) is int and type(b) is int or\
+       type(a) is float and type(b) is float or\
+       type(a) is int and type(b) is float or\
+       type(a) is float and type(b) is int:
+        c = a +  b
+        return c
+    else:
+        return 'Please input numbers'
+The following table shows the various combinations of input variable data types and their corresponding output or results based on the conditions set on the metadata of the add function based on Scenario 3:
+
+Figure 1.7 – Scenario 3 metadata combinations
+Figure 1.7 – Scenario 3 metadata combinations
+
+Executing the following code provides the combination of output values shown in Figure 1.7, including the addition of floating-point values:
+
+add(15443,675683)  
+691126
+add(54381,3.7876)  
+54384.7876
+add(6.7754,543.76)  
+550.5354
+add(79894,0.6568)  
+79894.6568
+add('meta',14684)  
+'Please input numbers'
+add(6576,'meta')  
+'Please input numbers'
+add('meta','program')  
+'Please input numbers'
+These are some of the approaches that can be applied to perform simple metaprogramming on a function. However, these are not the only solutions that solve type errors or manipulate a function. There is more than one way or approach to implementing solutions using metaprogramming.
+
+Understanding why we need metaprogramming
+
+Considering what we’ve learned about metaprogramming, we may be wondering the following:
+
+“Is it always mandatory to apply metaprogramming techniques or to manipulate the metadata of the code while developing applications using Python 3 or above?”
+
+This is a common question that can be asked not only while developing applications using Python 3 or above, but also when using any programming language that supports the techniques of metaprogramming and gives developers the option to apply them in the application development process.
+
+To answer this question, it is important to understand the flexibility of metaprogramming and the techniques that are supported by Python to handle code manipulation, which will be covered throughout this book.
+
+One of the reasons to apply metaprogramming is to avoid repetition in various aspects of the Python-based application development process. We will look at an example of this in the Don’t Repeat Yourself section.
+
+In other words, introducing concepts such as code generators at the meta level can save development and execution time in functional- or domain-level programming. Domain-level programming corresponds to writing code for a particular domain, such as finance, networking, social media, and so on.
+
+The other need is to increase the abstraction of your code at the program metadata level rather than at the functional level. Abstraction is the concept of information hiding in the literal sense or in terms of object-oriented programming. Implementing abstraction at the meta-program level would help us decide what information to provide to the next level of coding and what not to provide.
+
+For example, developing a function template at the meta-program level would hide the function definition at the domain or functional level, as well as limit the amount of information that goes to the functional-level code.
+
+Metaprogramming allows us to manipulate programs using metadata at the meta level, which helps define how the grammar and semantics of your program should be. For example, in the Resolving type erors using metaprogramming section, we looked at controlling the outcome of the data types of a function by manipulating the function’s variables.
+
+Don’t Repeat Yourself
+
+In any application development process, thousands of lines of code are written. Don’t Repeat Yourself is a principle defined by Andy Hunt and Dave Thomas in their book The Pragmatic Programmer. The principle states that “Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.”
+
+While writing code, there are very high chances of writing multiple functions or methods that perform similar kinds of repetitive tasks, and the functions or methods, in turn, might be repetitive. This leads to redundancy in application development. The greatest disadvantage of redundancy is that when you make any modifications at one location, the implementation, modification, or code fixing needs to be repeated at multiple locations.
+
+Libraries are developed with classes and methods, including object-oriented programming techniques such as abstraction, inheritance, encapsulation, and so on, to avoid redundancy and maintain coding standards as much as possible. Even then, there are chances of repetitive methods being within a class that can still be simplified.
+
+Metaprogramming can help in handling such instances by implementing approaches such as dynamic code generation, dynamic function creation, and more. Throughout this book, we will be looking at various approaches that help you not to repeat yourself while developing applications.
+
+To get a taste of how we can dynamically generate code and avoid repetitions, let’s look at a simple example where arithmetic operations are implemented as repetitive functions.
+
+The following code consists of four basic arithmetic operations that can be performed on two numeric variables. We will be declaring and defining four functions that add, subtract, multiply, and divide two variables, a and b, store the result in a variable, c, and return it while the function is executed:
+
+def add(a,b):  
+    c = a + b  
+    return c  
+  
+def sub(a,b):  
+    c = a - b  
+    return c  
+  
+def multiply(a,b):  
+    c = a * b  
+    return c  
+  
+def divide(a,b):  
+    c = a / b  
+    return c  
+Each of the preceding functions needs to be called separately and variables need to be provided as input to execute them individually, as follows:
+
+add(2,5)  
+7
+sub(2,5)  
+-3
+multiply(2,5)  
+10
+divide(2,5)  
+0.4
+In this example, there is only one difference – the arithmetic operator that’s used in the function definition. This code can be simplified without implementing metaprogramming, just by declaring a new function that takes in an additional input variable operator.
+
+Let’s learn how to avoid this repetitive function definition and simplify the logic. The following code block defines one common function that can be reused to perform all four arithmetic operations. Let’s start by importing Python’s inbuilt module operator, which contains methods that support multiple arithmetic operations:
+
+import operator as op
+def arithmetic(a, b, operation):
+    result = operation(a, b)
+    return result
+In this code snippet, we have declared three variables, including the operation in the function arithmetic. Let’s see this in action:
+
+arithmetic('2', '5', op.add) '25'
+Executing this function using input variables would return a concatenated string, 25, that will serve the purpose of creating the common arithmetic function to perform multiple operations. We can look at providing various operations as input to see how this one common function serves multiple purposes.
+
+Calling this function with different arithmetic operators would resolve the need for repetitive function definitions:
+
+arithmetic(2, 5, op.add)
+7
+arithmetic(2 , 5, op.sub)
+-3
+arithmetic(2, 5, op.mul)
+10
+arithmetic(2 , 5, op.truediv)
+0.4
+This is one approach to resolving code redundancy and avoiding multiple function definitions. But what if we do not want to define the function itself until and unless it is required?
+
+To answer this question, we can implement dynamic function creation using metaprogramming. Dynamic functions are created during the code’s runtime as and when they are required.
+
+Although we are still in the introductory chapter, we will discuss an example of dynamic function creation next to get a view of what kind of programming will be covered throughout this book.
+
+Creating dynamic functions
+
+In this section, we’ll look at an example of how dynamic functions can be created for the same set of arithmetic operations we discussed earlier in this section.
+
+To create an arithmetic function dynamically, we need to import the library types and the FunctionType type. FunctionType is the type of all user-defined functions created by users during the Python-based application development process:
+
+from types import FunctionType  
+To begin this process, we will create a string variable that is a function definition of the arithmetic function:
+
+functionstring = '''
+def arithmetic(a, b):
+    op = __import__('operator')
+    result = op.add(a, b)
+    return result
+    '''  
+print(functionstring)
+We’ll get the following output:
+
+ def arithmetic(a, b):
+    op = __import__('operator')
+    result = op.add(a, b)
+    return result 
+Now, we will create another variable, functiontemplate, and compile 'functionstring' into a code object. We will also set the code object to be executed using 'exec'. The compile method is used to convert the string in Python into a code object that can be further executed using the exec method:
+
+functiontemplate = compile(functionstring, 'functionstring', 'exec')  
+functiontemplate 
+<code object <module> at 0x000001E20D498660, file "functionstring", line 1>
+The code object of the function definition arithmetic will be stored in a tuple in functiontemplate and can be accessed as follows:
+
+functiontemplate.co_consts[0]  
+<code object arithmetic at 0x000001E20D4985B0, file "functionstring", line 1>
+The next step involves creating a function object using the functiontemplate code object. This can be done using the FunctionType method, which accepts the code object and global variables as input parameters:
+
+dynamicfunction = FunctionType(functiontemplate.co_consts[0], globals(),"add")
+dynamicfunction  
+<function _main_.arithmetic(a,b)> 
+Upon executing, dynamicfunction, it will behave the same way as the add operation works in the operator module’s add method in the arithmetic function:
+
+dynamicfunction(2,5)  
+7
+Now that we know how to create a function dynamically, we can look at extending it further to create multiple functions, each with a different operation and a different name, dynamically.
+
+To do this, we must create a list of operators and a list of function names:
+
+operator = ['op.add','op.sub','op.mul','op.truediv','op.pow','op.mod', 'op.gt', 'op.lt'] 
+functionname = ['add','sub', 'multiply', 'divide', 'power',\
+ 'modulus', 'greaterthan', 'lesserthan']  
+Our earlier list of four functions only contained the add, sub, multiply, and divide operations.
+
+The earlier functionname list contained eight functions. This is the flexibility we get while creating dynamic functions.
+
+For ease of use, let’s also create two input variables, a and b, to be used while executing the function:
+
+a = 2  
+b = 5  
+In the following code, we will be creating a function called functiongenerator() that implements metaprogramming to dynamically generate as many arithmetic functions as we want. This function will take four input parameters – that is, the list’s functionname, operator, a, and b.
+
+Here is the code:
+
+def functiongenerator(functionname, operator, a,b):    
+    from types import FunctionType    
+    functionstring = []    
+    for i in operator:    
+        functionstring.append('''
+def arithmetic(a, b):
+    op = __import__('operator')
+    result = '''+ i + '''(a, b)
+    return result
+    ''')    
+        functiontemplate = []    
+    for i in functionstring:    
+        functiontemplate.append(compile(i, 'functionstring', 'exec'))    
+        dynamicfunction = []    
+    for i,j in zip(functiontemplate,functionname):    
+        dynamicfunction.append(FunctionType(i.co_consts[0], \
+          globals(), j))    
+        functiondict = {}    
+        
+    for i,j in zip(functionname,dynamicfunction):    
+        functiondict[i]=j    
+            
+    for i in dynamicfunction:    
+        print (i(a,b))    
+      
+    return functiondict    
+Within functiongenerator(), the following occurs:
+
+A new functionstring list is created with a function definition for each arithmetic operator provided in the operator list.
+A new functiontemplate list is created with a code object for each function definition.
+A new dynamicfunction list is created with a function object for each code object.
+A new functiondict dictionary is created with a key-value pair of function name-function objects.
+Functiongenerator returns the generated functions as a dictionary.
+Additionally, functiongenerator executes the dynamic functions and prints the results.
+Executing this function results in the following output:
+
+funcdict = functiongenerator(functionname, operator, a,b)  
+7
+-3
+10
+0.4
+32
+2
+False
+True
+funcdict  
+{'add': <function _main_.arithmetic(a,b)>,
+ 'sub': <function _main_.arithmetic(a,b)>,
+ 'multiply': <function _main_.arithmetic(a,b)>,
+ 'divide': <function _main_.arithmetic(a,b)>,
+ 'power': <function _main_.arithmetic(a,b)>,
+ 'modulus': <function _main_.arithmetic(a,b)>,
+ 'greaterthan': <function _main_.arithmetic(a,b)>,
+ 'lesserthan': <function _main_.arithmetic(a,b)>,} 
+Any specific function from the preceding generated functions can be called individually and used further, as follows:
+
+funcdict['divide'](a,b)  
+0.4
+The following diagram shows the complete process of metaprogramming to develop these dynamic functions:
+
+Figure 1.8 – Dynamic function generator
+Figure 1.8 – Dynamic function generator
+
+Now that we know about dynamic function generators, let’s look at other applications of metaprogramming.
+
+Exploring the applications of metaprogramming
+
+Metaprogramming can be applied to various Python-based application development solutions, such as automated code generators, component-based or flow-based application development, domain-specific language development, and many more.
+
+Any code you develop, be it for a class or a method, internally applies metaprogramming, and its use is inevitable in the Python application development process. However, applying metaprogramming concepts explicitly is a conscious decision-making process and it purely depends on the expected outcome of your application.
+
+In our example of dynamic function creation, we implemented metaprogramming to avoid repetitions and also to ensure the abstraction of the code at the meta-level.
+
+Let’s consider a scenario where we want to develop a functional flow-based application for non-programmers to use. For instance, the application can be a domain-specific data transformation tool that works with high levels of abstraction and does not provide too much design or development-based information to the end users. However, it also helps the end users dynamically create modules that can help in their domain-specific problem solving, without the need to write any programs. In such cases, metaprogramming comes in handy for the application development process:
+
+Figure 1.9 – Levels of programming
+Figure 1.9 – Levels of programming
+
+We will look at the case studies and applications of metaprogramming in more detail throughout this book.
+
+Summary
+
+In this chapter, we provide a quick overview of the programming paradigm of metaprogramming and looked at an example of solving a type error using metaprogramming in Python 3.
+
+We learned why there is a need to apply metaprogramming techniques in the Python application development process. We also learned about the Don’t Repeat Yourself concept by looking at a practical approach that explains an example implementation of dynamic function creation using metaprogramming, emphasizing the concepts of avoiding repetition and implementing abstraction at the meta level in the code. Finally, we provided a high-level overview of the applications of metaprogramming that we will look at throughout this book. These skills will help us understand how and why to apply metaprogramming in various applications.
+
+In the next chapter, we will review the object-oriented programming concepts of Python. The next chapter is more of a refresher on object-oriented programming concepts and is optional if you are already familiar with those concepts.
