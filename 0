@@ -1,0 +1,8 @@
+Part 1: Fundamentals – Introduction to Object-Oriented Python and Metaprogramming
+
+The objective of this section is to give you an overview of the concept of metaprogramming, its usage, and its advantages in building Python-based applications. This section also covers the basics of object-oriented programming in Python, such as the usage of classes, functions, and objects, to help you familiarize yourself with the basic concepts, before deep diving into the complex properties of metaprogramming. 
+
+This part contains the following chapters:
+
+Chapter 1, The Need for and Applications of Metaprogramming
+Chapter 2, Refresher of OOP Concepts in Python
